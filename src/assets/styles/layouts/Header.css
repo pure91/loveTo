@@ -1,0 +1,33 @@
+/* 헤더 */
+.header-container {
+    background: #A1C6FF; /* 하늘색 */
+    color: #333;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-link {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #A1C6FF; /* 하늘색 강조 */
+}

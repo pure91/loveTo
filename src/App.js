@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Route, Routes} from 'react-router-dom';
+import {AuthProvider} from "./context/AuthContext";
+import Layout from './components/layouts/Layout';
+import Home from './pages/Home';
+import Login from './pages/join/Login';
+import Join from "./pages/join/Join";
+import JoinProfile from "./pages/join/JoinProfile";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <AuthProvider>  {/* AuthProvider로 감싸기 */}
+            <Routes>
+                <Route path="/" element={<Layout><Home/></Layout>}/>
+                <Route path="/login" element={<Layout><Login/></Layout>}/>
+                <Route path="/join" element={<Layout><Join/></Layout>}/>
+                <Route path="/join/profile" element={<Layout><JoinProfile/></Layout>}/>
+            </Routes>
+        </AuthProvider>
+    );
+};
 
 export default App;

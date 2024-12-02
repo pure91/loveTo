@@ -1,0 +1,19 @@
+/* 전체 레이아웃 */
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: #f9f9f9; /* 배경 색상 */
+    color: #333; /* 텍스트 색상 */
+}
+
+/* 콘텐츠 */
+.layout-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: linear-gradient(to bottom, #ffffff, #f0f0f5); /* 부드러운 그라디언트 배경 */
+}
