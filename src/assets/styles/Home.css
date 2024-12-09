@@ -11,7 +11,7 @@
 
 .home-banner h1 {
     font-size: 2.5rem;
-    color: #1D3557; /* 어두운 파란색 */
+    color: #1D3557;
     font-weight: bold;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .cta-button {
-    background-color: #1D3557; /* 어두운 파란색 */
+    background-color: #1D3557;
     color: white;
     padding: 10px 20px;
     font-size: 1rem;
@@ -33,7 +33,7 @@
 }
 
 .cta-button:hover {
-    background-color: #457B9D; /* 파란색 강조 */
+    background-color: #457B9D;
 }
 
 .home-services {
@@ -44,7 +44,7 @@
 }
 
 .service-box {
-    background: #F1FAEE; /* 밝은 하늘색 배경 */
+    background: #F1FAEE;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -54,5 +54,5 @@
 }
 
 .service-box:hover {
-    transform: translateY(-10px); /* hover시 약간의 상승 효과 */
+    transform: translateY(-5px); /* hover시 약간의 상승 효과 */
 }

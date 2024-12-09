@@ -10,8 +10,8 @@ const Home = () => {
                 <title>LoveTo</title>
             </Helmet>
             <div className="home-banner">
-                <h1>해피 럽투!</h1>
-                <p>럽투와 함께 행복한 추억을 쌓아보세요.</p>
+                <h1>해피 럽투!🍀</h1>
+                <p>럽투와 함께 행복한 추억을 쌓아보세요☺️</p>
                 <Link to="/login"><button className="cta-button">시작하기</button></Link>
             </div>
             <div className="home-services">

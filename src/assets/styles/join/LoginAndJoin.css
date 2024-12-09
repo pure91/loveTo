@@ -1,0 +1,188 @@
+/* 로그인 및 회원가입 페이지 */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F0F4F8;
+    height: 100%; /* 페이지 전체 높이를 채움 */
+}
+
+/* 박스 스타일 (공통) */
+.auth-container .login-box, .auth-container .signup-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.auth-container h1 {
+    font-size: 2rem;
+    color: #1D3557;
+    margin-bottom: 2rem;
+}
+
+/* 인풋 스타일 */
+.auth-container input, .style-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    box-sizing: border-box; /* 패딩 포함 */
+}
+
+/* 커스텀 체크박스 */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.custom-checkbox .checkbox-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007BFF;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-circle {
+    background-color: #007BFF;
+    border-color: #007BFF;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-circle::after {
+    content: '✔';
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 버튼 스타일 */
+.auth-container .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+.auth-container button {
+    padding: 1rem 20px; /* 수직 패딩을 1rem, 좌우 패딩 20px로 고정 */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-sizing: border-box; /* padding과 border 포함하여 크기 계산 */
+    min-height: 50px; /* 최소 높이 보장 */
+    width: 100%; /* 버튼이 부모 컨테이너 너비에 맞게 늘어나도록 설정 */
+}
+
+.auth-container .login-btn {
+    background-color: #A1C6FF;
+    color: white;
+}
+
+.auth-container .signup-btn {
+    background-color: #1D3557;
+    color: white;
+}
+
+.auth-container button:hover {
+    opacity: 0.9;
+}
+
+/* 에러 메시지 */
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    text-align: left;
+    margin-top: 0.5rem;
+}
+
+/* 기본 컨테이너 */
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+/* 메인 컨테이너 */
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F0F4F8;
+    height: 100%; /* 페이지 전체 높이 */
+}
+
+/* 레이아웃 컨테이너 */
+.layout-wrapper {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* 제목 스타일 */
+.title {
+    font-size: 2rem;
+    color: #1D3557;
+    margin-bottom: 2rem;
+}
+
+/* 폼 스타일 */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* 버튼 활성화 / 비활성화 */
+.next-btn {
+    background-color: #1D3557;
+    color: white;
+    padding: 1rem 20px; /* 패딩을 일관성 있게 설정 */
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-sizing: border-box; /* padding 포함 크기 계산 */
+    min-height: 50px; /* 최소 높이 보장 */
+    display: inline-block; /* 버튼이 부모 요소에 맞게 늘어나도록 설정 */
+    width: 100%; /* 부모 요소 크기에 맞게 100% 너비 설정 */
+}
+
+/* 비 활성화 다음 버튼 */
+.next-btn.disabled {
+    background-color: #A1C6FF;
+    cursor: not-allowed;
+}

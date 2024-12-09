@@ -1,6 +1,6 @@
 /* 헤더 */
 .header-container {
-    background: #A1C6FF; /* 하늘색 */
+    background: #A1C6FF;
     color: #333;
     padding: 1rem 2rem;
     position: sticky;
@@ -29,5 +29,5 @@
 }
 
 .nav-link:hover {
-    color: #A1C6FF; /* 하늘색 강조 */
+    color: #A1C6FF;
 }

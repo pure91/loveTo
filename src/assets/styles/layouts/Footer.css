@@ -1,6 +1,6 @@
 /* 푸터 */
 .footer-container {
-    background: #333; /* 검은색 푸터 */
+    background: #333;
     color: #fff;
     text-align: center;
     padding: 1rem;
@@ -11,5 +11,5 @@
 .footer-message {
     font-style: italic;
     margin-top: 0.5rem;
-    color: #A1C6FF; /* 하늘색 메시지 */
+    color: #A1C6FF;
 }

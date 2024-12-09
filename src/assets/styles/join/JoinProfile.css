@@ -1,10 +1,10 @@
 /* 프로필 사진 컨테이너 */
 .profile-picture-container {
-    width: 120px; /* 크기 조정 */
+    width: 120px;
     height: 120px;
-    border-radius: 50%; /* 동그랗게 만들기 */
+    border-radius: 50%;
     overflow: hidden;
-    border: 2px solid #ccc; /* 테두리 추가 */
+    border: 2px solid #ccc;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -27,13 +27,15 @@
 
 /* 일반 input 스타일 */
 .style-input {
-    width: 100%;
-    padding: 8px;
+    width: auto;
+    padding: 0.8rem;
     margin-top: 8px;
     border-radius: 4px;
     border: 1px solid #ddd;
+
 }
 
+/* 활성화 다음 버튼 */
 .next-btn.default {
     background-color: #1D3557;
     color: white;
@@ -41,8 +43,12 @@
     border-radius: 4px;
     border: none;
     cursor: pointer;
+    box-sizing: border-box; /* padding과 border 포함하여 크기 계산 */
+    min-height: 50px; /* 최소 높이 보장 */
+    width: 100%; /* 부모 크기에 맞게 버튼 너비 확장 */
 }
 
+/* 비활성화 다음 버튼 */
 .next-btn.default:disabled {
     background-color: #A1C6FF;
     cursor: not-allowed;

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../../assets/styles/join/Join.css';
+import '../../assets/styles/join/LoginAndJoin.css';
 import {useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
 import ProfileFormInput from "./ProfileFormInput";
@@ -59,9 +59,12 @@ const Join = () => {
                           autoComplete: 'off',
                         }}
                       />
-                    <button onClick={handleNextClick}
-                            className={`next-btn ${isActivated ? 'default' : 'disabled'}`}
-                            disabled={!isActivated}>
+                    <button
+                        onClick={handleNextClick}
+                        className={`next-btn ${isActivated ? 'default' : 'disabled'}`}
+                        disabled={!isActivated}
+                        type="button"
+                    >
                         다음
                     </button>
                 </form>

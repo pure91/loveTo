@@ -4,8 +4,8 @@
     flex-direction: column;
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: #f9f9f9; /* 배경 색상 */
-    color: #333; /* 텍스트 색상 */
+    background: #f9f9f9;
+    color: #333;
 }
 
 /* 콘텐츠 */
@@ -15,5 +15,5 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    background: linear-gradient(to bottom, #ffffff, #f0f0f5); /* 부드러운 그라디언트 배경 */
+    background: linear-gradient(to bottom, #ffffff, #f0f0f5);
 }
