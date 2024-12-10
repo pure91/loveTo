@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../../assets/styles/join/LoginAndJoin.css'; // CSS 경로 확인
+import '../../assets/styles/join/LoginAndJoin.css';
 import {useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
 
@@ -71,28 +71,29 @@ const Login = () => {
                         <div className="container">
                             <label htmlFor="id" className="label">아이디</label>
                             <input
+                                className="style-input"
                                 type="text"
                                 id="id"
                                 placeholder="아이디를 입력하세요"
                                 value={id}
                                 onChange={(e) => setId(e.target.value)}
-                                className="style-input"
                             />
                         </div>
                     </div>
                     <div className="input-group">
                         <div className="container">
-                            <label htmlFor="password" className="label">비밀번호</label> <input
-                            type="password"
-                            id="password"
-                            placeholder="비밀번호를 입력하세요"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="style-input"
-                        />
+                            <label htmlFor="password" className="label">비밀번호</label>
+                            <input
+                                className="style-input"
+                                type="password"
+                                id="password"
+                                placeholder="비밀번호를 입력하세요"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
                         </div>
                     </div>
-                    <div className="input-group2">
+                    <div className="div-save-id">
                         <label className="custom-checkbox">
                             <input
                                 type="checkbox"
