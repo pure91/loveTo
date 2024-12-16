@@ -1,15 +1,16 @@
-/* 프로필 사진 컨테이너 */
+/* 프로필 사진 컨테이너, 미리보기 */
 .profile-picture-container {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     align-self: center;
+    position: relative;
 }
 
 /* 사진이 업로드 되었을 때 */
@@ -25,6 +26,28 @@
     color: #aaa;
 }
 
+/* 취소 버튼 디자인 */
+/*.reset-btn {*/
+/*    position: absolute;*/
+/*    background: rgba(0, 0, 0, 0.5); !* 반투명 배경 *!*/
+/*    color: white;*/
+/*    border: none;*/
+/*    border-radius: 50%;*/
+/*    width: 10px;*/
+/*    height: 10px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    cursor: pointer;*/
+/*    top: -5px; !* 이미지 위로 이동 *!*/
+/*    right: -5px; !* 이미지 오른쪽 외부로 이동 *!*/
+/*    transition: background-color 0.2s ease;*/
+/*}*/
+
+/*.reset-btn:hover {*/
+/*    background: rgba(0, 0, 0, 0.8); !* 마우스 오버 시 더 진해지는 색 *!*/
+/*}*/
+
 /* 일반 input 스타일 */
 .style-input {
     padding: 0.8rem;
@@ -36,7 +59,7 @@
 
 /* 활성화 다음 버튼 */
 .next-btn.default {
-    background-color: #1D3557;
+    background-color: cornflowerblue;
     color: white;
     padding: 10px 20px;
     border-radius: 4px;
@@ -49,7 +72,7 @@
 
 /* 비활성화 다음 버튼 */
 .next-btn.default:disabled {
-    background-color: #A1C6FF;
+    background-color: gray;
     cursor: not-allowed;
 }
 
@@ -61,7 +84,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 400px;
+    max-width: 450px;
     border: 2px dashed #ccc;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -85,37 +108,4 @@
     color: #007bff;
     cursor: pointer;
     text-decoration: underline;
-}
-
-/* 미리보기 */
-.profile-picture-container {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 취소 버튼 */
-.reset-btn {
-    position: absolute;
-    margin-right: -360px;
-    background: gray;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-.reset-btn:hover {
-    background: black;
 }

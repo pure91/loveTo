@@ -4,7 +4,7 @@ import {AuthProvider} from "./context/AuthContext";
 import Layout from './components/layouts/Layout';
 import Home from './pages/Home';
 import Login from './pages/join/Login';
-import Join from "./pages/join/Join";
+import JoinEmail from "./pages/join/JoinEmail";
 import JoinProfile from "./pages/join/JoinProfile";
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Layout><Home/></Layout>}/>
                 <Route path="/login" element={<Layout><Login/></Layout>}/>
-                <Route path="/join" element={<Layout><Join/></Layout>}/>
+                <Route path="/join/email" element={<Layout><JoinEmail/></Layout>}/>
                 <Route path="/join/profile" element={<Layout><JoinProfile/></Layout>}/>
             </Routes>
         </AuthProvider>

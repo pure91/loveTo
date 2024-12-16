@@ -1,58 +1,81 @@
-/* 홈 페이지 */
+/* 홈 컨테이너 */
 .home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem;
-    background: #ffffff;
     text-align: center;
 }
 
+/* 배너 스타일 */
 .home-banner {
     margin-bottom: 3rem;
 }
 
 .home-banner h1 {
     font-size: 2.5rem;
-    color: #1D3557;
-    font-weight: bold;
-}
+    color: #333;
+    margin-bottom: 1rem;}
 
 .home-banner p {
     font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 2rem;
+    color: #666;
+    margin-bottom: 1.5rem;
 }
 
 .cta-button {
-    background-color: #1D3557;
-    color: white;
-    padding: 10px 20px;
+    padding: 0.8rem 2rem;
     font-size: 1rem;
+    background-color: cornflowerblue;
+    color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
-    background-color: #457B9D;
+    background-color: #0056b3;
 }
 
+/* 서비스 섹션 */
 .home-services {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    justify-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .service-box {
-    background: #F1FAEE;
-    padding: 2rem;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease-in-out;
+    font-size: 1rem;
 }
 
 .service-box:hover {
-    transform: translateY(-5px); /* hover시 약간의 상승 효과 */
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.service-box img {
+    max-width: 30%;  /* 부모 요소의 크기에 맞게 이미지 크기 자동 조정 */
+    height: auto;     /* 비율 유지 */
+    display: block;   /* 이미지 아래에 불필요한 여백을 제거 */
+    margin: 0 auto;   /* 이미지 가운데 정렬 */
+}
+
+/* 반응형 설정 */
+@media (max-width: 768px) {
+    .home-banner h1 {
+        font-size: 2rem;
+    }
+
+    .cta-button {
+        font-size: 0.9rem;
+    }
 }

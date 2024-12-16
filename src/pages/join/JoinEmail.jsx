@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import '../../assets/styles/join/LoginAndJoin.css';
 import {useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
-import ProfileFormInput from "./ProfileFormInput";
+import InputValid from "./InputValid";
 
 /** 회원가입 페이지 */
-const Join = () => {
+const JoinEmail = () => {
     const [formData, setFormData] = useState({ email: '', password: ''});
     const [error, setError] = useState({email: '', password: ''});
     const [isActivated, setIsActivated] = useState(false);
@@ -33,7 +33,7 @@ const Join = () => {
             <div className="layout-wrapper">
                 <form className="form">
                     <h1 className="title">이메일로 회원가입</h1>
-                    <ProfileFormInput
+                    <InputValid
                         id='email'
                         label='이메일'
                         formData={formData}
@@ -46,7 +46,7 @@ const Join = () => {
                             autoComplete: 'off',
                         }}
                     />
-                    <ProfileFormInput
+                    <InputValid
                         id='password'
                         label='비밀번호'
                         formData={formData}
@@ -73,4 +73,4 @@ const Join = () => {
     );
 };
 
-export default Join;
+export default JoinEmail;

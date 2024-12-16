@@ -2,18 +2,21 @@ import React, {useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
 import '../../assets/styles/join/JoinProfile.css'
+import axios from "axios";
 
 const JoinProfile = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const formData = location.state; // 이전 페이지에서 전달된 formData
+    const forwardFormData = location.state; // 이전 페이지에서 전달된 formData
+
+    console.log("넘어온 데이터 확인 formData:",forwardFormData);
 
     // 프로필 Data
     const [profileData, setProfileData] = useState({
         id: '',
         nickname: '',
-        profilePicture: null,
-        profilePictureName: "",  // 파일 이름을 따로 저장
+        profilePicturePath: null,
+        profilePictureName: "",
     })
 
     // 프로필 사진 미리보기 URL
@@ -24,7 +27,12 @@ const JoinProfile = () => {
 
     // 파일 처리 공통 함수
     const handleFile = (file) => {
-        setProfileData({...profileData, profilePicture: file, profilePictureName: file.name});
+        console.log("파일업데이트 : ", file);
+        setProfileData({
+            ...profileData,
+            profilePicturePath: file,
+            profilePictureName: file.name
+        });
 
         // 파일 선택 시 미리보기 url 생성
         const fileReader = new FileReader();
@@ -68,23 +76,49 @@ const JoinProfile = () => {
     }
 
     // 파일 선택 취소
-    const handleFileCancel = () => {
-        setProfileData({...profileData, profilePicture: null, profilePictureName: ""});
-        setPreviewUrl(null);
-        document.getElementById('profilePicture').value = ""; // 파일 인풋 초기화
-    }
+    // const handleFileCancel = () => {
+    //     setProfileData({...profileData, profilePicturePath: null, profilePictureName: ""});
+    //     setPreviewUrl(null);
+    //     document.getElementById('profilePicturePath').value = ""; // 파일 인풋 초기화
+    // }
 
     // 아이디, 닉네임 인풋 값
     const handleInputChange = (e) => {
-        const {nickname, value} = e.target;
-        setProfileData({...profileData, [nickname]: value});
+        const {id, value} = e.target;
+        setProfileData({...profileData, [id]: value });
+        console.log("Updated profileData:", profileData);  // 상태 업데이트 후 로그
     }
 
-    // 최종 가입
-    const handleSubmit = () => {
-        console.log(`최종 회원가입 데이터:`, {...formData, ...profileData});
-        navigate('/'); // home
-    }
+    // 회원가입 최종 제출
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const formDataToSubmit = new FormData();
+        formDataToSubmit.append('email', forwardFormData.email || '');
+        formDataToSubmit.append('password', forwardFormData.password || '');
+        formDataToSubmit.append('id', profileData.id || '');
+        formDataToSubmit.append('nickname', profileData.nickname || '');
+
+        if (profileData.profilePicturePath) {
+            formDataToSubmit.append('profilePicturePath', profileData.profilePicturePath || '');
+            formDataToSubmit.append('filename', profileData.profilePictureName || '');
+        } else {
+            console.warn('No profile picture selected');
+        }
+        console.log('FormData 확인:', formDataToSubmit);
+
+        try {
+            const response = await axios.post('/api/join', formDataToSubmit);
+            if (response.status === 200) {
+                console.log("회원가입 성공:", response.data);
+                navigate('/'); // home으로 ㄱㄱ
+            }
+        } catch (error) {
+            console.log("회원가입 실패:", error);
+        } finally {
+
+        }
+    };
 
     return (
         <main className="main">
@@ -98,11 +132,21 @@ const JoinProfile = () => {
                     {/* 프로필 사진 미리보기 */}
                     <div className="profile-picture-container">
                         {previewUrl ? (
-                            <img
-                                src={previewUrl}
-                                alt="Profile Preview"
-                                className="profile-picture"
-                            />
+                            <>
+                                <img
+                                    src={previewUrl}
+                                    alt="Profile Preview"
+                                    className="profile-picture"
+                                />
+                                {/*/!* X 버튼 *!/*/}
+                                {/*<button*/}
+                                {/*    type="button"*/}
+                                {/*    className="reset-btn"*/}
+                                {/*    onClick={handleFileCancel}*/}
+                                {/*>*/}
+                                {/*    X*/}
+                                {/*</button>*/}
+                            </>
                         ) : (
                             <div className="profile-picture-placeholder">사진 미리보기</div>
                         )}
@@ -115,38 +159,21 @@ const JoinProfile = () => {
                         onDragLeave={handleDrag}
                         onDrop={handleDrop}
                     >
-                        {/* 파일 선택 후 기본 input[type="file"] 숨김 */}
-                        {profileData.profilePicture ? (
-                            <div className="file-name-display">{profileData.profilePictureName}</div>
-                        ) : (
-                            <div className="file-placeholder">
-                                드래그 앤 드롭 또는 <label htmlFor="profilePicture" className="file-select-label">파일 선택</label>
-                            </div>
-                        )}
+                        <div className="file-placeholder">
+                            드래그 앤 드롭 또는 <label htmlFor="profilePicturePath" className="file-select-label">파일 선택</label>
+                        </div>
 
                         <input
-                            id="profilePicture"
-                            name="profilePicture"
+                            id="profilePicturePath"
+                            name="profilePicturePath"
                             type="file"
                             className="file-input"
                             onChange={handleFileChange}
-                            style={{display: 'none'}}
+                            style={{display: 'none'}} // 기본 file 선택 숨김
                         />
-                        {/* X 버튼 */}
-                        {profileData.profilePicture && (
-                            <button
-                                type="button"
-                                className="reset-btn"
-                                onClick={handleFileCancel}
-                            >
-                                X
-                            </button>
-                        )}
                     </div>
 
-
-
-                    {/*아이디*/}
+                    {/* 아이디 */}
                     <div className="container">
                         <label htmlFor="id" className="label">아이디</label>
                         <input
@@ -160,7 +187,7 @@ const JoinProfile = () => {
                         />
                     </div>
 
-                    {/* 이름 */}
+                    {/* 닉네임 */}
                     <div className="container">
                         <label htmlFor="nickname" className="label">닉네임</label>
                         <input
