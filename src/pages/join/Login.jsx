@@ -4,14 +4,12 @@ import {useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
 import axios from "axios";
 import InputValid from "./InputValid";
-import { ClipLoader } from 'react-spinners';
 
-const Login = () => {
+const Login = ({ setIsAuthenticated, setUserInfo }) => {
     const [formData, setFormData] = useState({id: '', password: ''});
     const [error, setError] = useState({id: '', password: ''});
     const [rememberMe, setRememberMe] = useState(false);
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
 
     // 저장된 아이디 불러오기
     useEffect(() => {
@@ -35,12 +33,19 @@ const Login = () => {
 
     // 로그인 시도
     const handleLogin = async () => {
-        setLoading(true);
         const loginData = {id: formData.id, password: formData.password};
+        console.log("front단 loginData:", loginData);
 
         try {
-            const response = await axios.post('http://localhost:3002/api/login', loginData);
+            const response = await axios.post('/api/login', loginData, { withCredentials: true }); // 다른 도메인에 요청 보낼때 쿠키와 인증 정보를 함께 전송
             console.log("로그인 성공:", response.data);
+
+            // 로그인 성공 시 JWT 토큰을 Localstorage에 저장
+            localStorage.setItem('token', response.data.token);
+            console.log("reponse.data.token:", response.data.token);
+
+            setIsAuthenticated(true);
+            setUserInfo(response.data.user);
             navigate('/');
         } catch (error) {
             console.error('로그인 실패:', error);
@@ -49,8 +54,6 @@ const Login = () => {
                 id: '아이디가 올바르지 않습니다.',
                 password: '비밀번호가 올바르지 않습니다.'
             }));
-        } finally {
-            setLoading(false);
         }
     };
 

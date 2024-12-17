@@ -1,26 +1,43 @@
+/* 사진 컨테이너 스타일 */
+.photo-container {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+/* 사진 아이템 스타일 */
+.photo-item {
+    display: flex;
+    gap: 1rem;
+    place-content: center;
+}
+
+.photo-item img {
+    width: 45%;
+    height: auto;
+    border-radius: 10px;
+}
+
 /* 홈 컨테이너 */
 .home-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
     text-align: center;
 }
 
-/* 배너 스타일 */
-.home-banner {
-    margin-bottom: 3rem;
-}
-
+/* 홈 배너 스타일 */
 .home-banner h1 {
     font-size: 2.5rem;
     color: #333;
-    margin-bottom: 1rem;}
+}
 
 .home-banner p {
     font-size: 1.2rem;
     color: #666;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .cta-button {
@@ -31,6 +48,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: auto;
     transition: background-color 0.3s ease;
 }
 
@@ -38,7 +56,7 @@
     background-color: #0056b3;
 }
 
-/* 서비스 섹션 */
+/* 서비스박스 섹션 */
 .home-services {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -63,10 +81,10 @@
 }
 
 .service-box img {
-    max-width: 30%;  /* 부모 요소의 크기에 맞게 이미지 크기 자동 조정 */
-    height: auto;     /* 비율 유지 */
-    display: block;   /* 이미지 아래에 불필요한 여백을 제거 */
-    margin: 0 auto;   /* 이미지 가운데 정렬 */
+    max-width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 /* 반응형 설정 */

@@ -111,7 +111,7 @@ const JoinProfile = () => {
             const response = await axios.post('/api/join', formDataToSubmit);
             if (response.status === 200) {
                 console.log("회원가입 성공:", response.data);
-                navigate('/'); // home으로 ㄱㄱ
+                navigate('/');
             }
         } catch (error) {
             console.log("회원가입 실패:", error);

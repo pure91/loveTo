@@ -1,11 +1,11 @@
 /* 프로필 사진 컨테이너, 미리보기 */
 .profile-picture-container {
-    width: 160px;
-    height: 160px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid #ccc;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +54,6 @@
     margin-top: 8px;
     border-radius: 4px;
     border: 1px solid #ddd;
-
 }
 
 /* 활성화 다음 버튼 */
@@ -75,7 +74,6 @@
     background-color: gray;
     cursor: not-allowed;
 }
-
 
 /* 드래그 앤 드롭 영역 */
 .file-input-wrapper {
