@@ -86,15 +86,25 @@ const JoinProfile = () => {
     }
 
     // 아이디, 닉네임 인풋 값
-    const handleInputChange = (e) => {
-        const {id, value} = e.target;
-        setProfileData({...profileData, [id]: value });
-        console.log("Updated profileData:", profileData);  // 상태 업데이트 후 로그
-    }
+    // const handleInputChange = (e) => {
+    //     const {id, value} = e.target;
+    //     setProfileData({...profileData, [id]: value });
+    //     console.log("Updated profileData:", profileData);  // 상태 업데이트 후 로그
+    // }
 
     // 회원가입 최종 제출
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (profileData.id === '' || profileData.id === null) {
+            alert("아이디를 입력해 주세요.");
+            return;
+        }
+
+        if (profileData.nickname === '' || profileData.nickname === null) {
+            alert("닉네임을 입력해 주세요.");
+            return;
+        }
 
         const formDataToSubmit = new FormData();
         formDataToSubmit.append('email', forwardFormData.email || '');
@@ -182,18 +192,6 @@ const JoinProfile = () => {
                             autoComplete: 'off',
                         }}
                     />
-                    {/*<div className="container">*/}
-                    {/*    <label htmlFor="id" className="label">아이디</label>*/}
-                    {/*    <input*/}
-                    {/*        className="style-input"*/}
-                    {/*        id="id"*/}
-                    {/*        name="id"*/}
-                    {/*        type="text"*/}
-                    {/*        placeholder="아이디를 설정해 주세요."*/}
-                    {/*        value={profileData.id}*/}
-                    {/*        onChange={handleInputChange}*/}
-                    {/*    />*/}
-                    {/*</div>*/}
 
                     {/* 닉네임 */}
                     <InputValid
@@ -209,18 +207,6 @@ const JoinProfile = () => {
                             autoComplete: 'off',
                         }}
                     />
-                    {/*<div className="container">*/}
-                    {/*    <label htmlFor="nickname" className="label">닉네임</label>*/}
-                    {/*    <input*/}
-                    {/*        className="style-input"*/}
-                    {/*        id="nickname"*/}
-                    {/*        name="nickname"*/}
-                    {/*        type="text"*/}
-                    {/*        placeholder="닉네임을 설정해 주세요."*/}
-                    {/*        value={profileData.nickname}*/}
-                    {/*        onChange={handleInputChange}*/}
-                    {/*    />*/}
-                    {/*</div>*/}
 
                     {/* 제출 */}
                     <button

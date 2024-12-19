@@ -20,27 +20,23 @@ const Header = ({isAuthenticated, userInfo, handleLogout}) => {
 
     useEffect(() => {
         const outSideClick = (e) => {
-            if (!e.target.closest('.modal-content') && !e.target.closest('.user-profile')) {
+            if (
+                isModalOpen && // 모달이 열려 있을때만
+                !e.target.closest('.modal-content') && // 모달 내부 클릭이 아님
+                !e.target.closest('.user-profile') // 프로필 이미지를 클릭한것이 아님
+            ) {
                 setOutsideClick(true);
             }
         };
 
         // 마우스 이벤트 (데스크탑)
         document.addEventListener('mousedown', outSideClick);  // 눌렀을 때 발생
-        document.addEventListener('mouseup', outSideClick);    // 떼었을 때 발생
-
-        // 터치 이벤트 (모바일)
-        document.addEventListener('touchstart', outSideClick); // 터치스크린에서 손가락을 화면에 대면 발생
-        document.addEventListener('touchend', outSideClick);
 
         // 언마운트 시 이벤트 리스너 제거
         return () => {
             document.removeEventListener('mousedown', outSideClick);
-            document.removeEventListener('mouseup', outSideClick);
-            document.removeEventListener('touchstart', outSideClick);
-            document.removeEventListener('touchend', outSideClick);
         };
-    }, []);
+    }, [isModalOpen]);
 
     useEffect(() => {
         if (isOutsideClick) {

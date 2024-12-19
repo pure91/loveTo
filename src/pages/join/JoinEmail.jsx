@@ -22,6 +22,15 @@ const JoinEmail = () => {
 
     // 다음 버튼 클릭
     const handleNextClick = () => {
+
+        if (formData.email === '' || formData.email === null) {
+            alert("이메일을 입력해 주세요.");
+        }
+
+        if (formData.password === '' || formData.password === null) {
+            alert("비밀번호를 입력해 주세요.")
+        }
+
         navigate('/join/profile', { state: formData });
     }
 
