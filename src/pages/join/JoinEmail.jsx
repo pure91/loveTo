@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import '../../assets/styles/join/LoginAndJoin.css';
 import {useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
+import '../../assets/styles/join/LoginAndJoin.css';
 import InputValid from "./InputValid";
 
 /** 회원가입 페이지 */
@@ -55,7 +55,7 @@ const JoinEmail = () => {
                         setError={setError}
                         inputProps={{
                           type: 'password',
-                          placeholder: '비밀번호를 설정해 주세요.',
+                          placeholder: '비밀번호를 입력해 주세요. (6자 이상)',
                           autoComplete: 'off',
                         }}
                       />

@@ -1,14 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
-import '../../assets/styles/join/JoinProfile.css'
 import axios from "axios";
+import '../../assets/styles/join/JoinProfile.css'
+import InputValid from "./InputValid";
 
 const JoinProfile = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const [error, setError] = useState({ id: '', nickname: '' });
+    const [isActivated, setIsActivated] = useState(false);
     const forwardFormData = location.state; // 이전 페이지에서 전달된 formData
-
     console.log("넘어온 데이터 확인 formData:",forwardFormData);
 
     // 프로필 Data
@@ -24,6 +26,14 @@ const JoinProfile = () => {
 
     // 드래그 앤 드롭 상태
     const [dragActive, setDragActive] = useState(false);
+
+    useEffect(() => {
+        if (error.id === 'noError' && error.nickname === 'noError') {
+            setIsActivated(true);
+        } else {
+            setIsActivated(false);
+        }
+    }, [error.id, error.nickname]);
 
     // 파일 처리 공통 함수
     const handleFile = (file) => {
@@ -74,13 +84,6 @@ const JoinProfile = () => {
             handleFile(file);
         }
     }
-
-    // 파일 선택 취소
-    // const handleFileCancel = () => {
-    //     setProfileData({...profileData, profilePicturePath: null, profilePictureName: ""});
-    //     setPreviewUrl(null);
-    //     document.getElementById('profilePicturePath').value = ""; // 파일 인풋 초기화
-    // }
 
     // 아이디, 닉네임 인풋 값
     const handleInputChange = (e) => {
@@ -138,14 +141,6 @@ const JoinProfile = () => {
                                     alt="Profile Preview"
                                     className="profile-picture"
                                 />
-                                {/*/!* X 버튼 *!/*/}
-                                {/*<button*/}
-                                {/*    type="button"*/}
-                                {/*    className="reset-btn"*/}
-                                {/*    onClick={handleFileCancel}*/}
-                                {/*>*/}
-                                {/*    X*/}
-                                {/*</button>*/}
                             </>
                         ) : (
                             <div className="profile-picture-placeholder">사진 미리보기</div>
@@ -174,32 +169,58 @@ const JoinProfile = () => {
                     </div>
 
                     {/* 아이디 */}
-                    <div className="container">
-                        <label htmlFor="id" className="label">아이디</label>
-                        <input
-                            className="style-input"
-                            id="id"
-                            name="id"
-                            type="text"
-                            placeholder="아이디를 설정해 주세요."
-                            value={profileData.id}
-                            onChange={handleInputChange}
-                        />
-                    </div>
+                    <InputValid
+                        id='id'
+                        label='아이디'
+                        formData={profileData}
+                        setFormData={setProfileData}
+                        error={error}
+                        setError={setError}
+                        inputProps={{
+                            type:'id',
+                            placeholder: '아이디를 입력해 주세요. (2~16자)',
+                            autoComplete: 'off',
+                        }}
+                    />
+                    {/*<div className="container">*/}
+                    {/*    <label htmlFor="id" className="label">아이디</label>*/}
+                    {/*    <input*/}
+                    {/*        className="style-input"*/}
+                    {/*        id="id"*/}
+                    {/*        name="id"*/}
+                    {/*        type="text"*/}
+                    {/*        placeholder="아이디를 설정해 주세요."*/}
+                    {/*        value={profileData.id}*/}
+                    {/*        onChange={handleInputChange}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
 
                     {/* 닉네임 */}
-                    <div className="container">
-                        <label htmlFor="nickname" className="label">닉네임</label>
-                        <input
-                            className="style-input"
-                            id="nickname"
-                            name="nickname"
-                            type="text"
-                            placeholder="닉네임을 설정해 주세요."
-                            value={profileData.nickname}
-                            onChange={handleInputChange}
-                        />
-                    </div>
+                    <InputValid
+                        id="nickname"
+                        label="닉네임"
+                        formData={profileData}
+                        setFormData={setProfileData}
+                        error={error}
+                        setError={setError}
+                        inputProps={{
+                            type: 'nickname',
+                            placeholder: '닉네임을 입력해 주세요. (2~16자)',
+                            autoComplete: 'off',
+                        }}
+                    />
+                    {/*<div className="container">*/}
+                    {/*    <label htmlFor="nickname" className="label">닉네임</label>*/}
+                    {/*    <input*/}
+                    {/*        className="style-input"*/}
+                    {/*        id="nickname"*/}
+                    {/*        name="nickname"*/}
+                    {/*        type="text"*/}
+                    {/*        placeholder="닉네임을 설정해 주세요."*/}
+                    {/*        value={profileData.nickname}*/}
+                    {/*        onChange={handleInputChange}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
 
                     {/* 제출 */}
                     <button
