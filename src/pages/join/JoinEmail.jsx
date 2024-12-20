@@ -20,15 +20,25 @@ const JoinEmail = () => {
         }
     }, [error.email, error.password]);
 
+
+    // 엔터키 활성화
+    const activeEnter = (e) => {
+        if (e.key === "Enter") {
+            handleNextClick();
+        }
+    }
+
     // 다음 버튼 클릭
     const handleNextClick = () => {
 
         if (formData.email === '' || formData.email === null) {
             alert("이메일을 입력해 주세요.");
+            return;
         }
 
         if (formData.password === '' || formData.password === null) {
             alert("비밀번호를 입력해 주세요.")
+            return;
         }
 
         navigate('/join/profile', { state: formData });
@@ -53,6 +63,7 @@ const JoinEmail = () => {
                             type: 'email',
                             placeholder: '이메일 주소를 입력해 주세요.',
                             autoComplete: 'off',
+                            onKeyDown: (e) => activeEnter(e),
                         }}
                     />
                     <InputValid
@@ -66,6 +77,7 @@ const JoinEmail = () => {
                           type: 'password',
                           placeholder: '비밀번호를 입력해 주세요. (6자 이상)',
                           autoComplete: 'off',
+                          onKeyDown: (e) => activeEnter(e),
                         }}
                       />
                     <button

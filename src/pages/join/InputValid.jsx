@@ -110,6 +110,7 @@ const InputValid = ({id, label, formData, setFormData, error, setError, inputPro
                 value={formData[id]}
                 data-isValid={isValid}
                 onChange={handleChange}
+                onKeyDown={inputProps.onKeyDown}
             />
             {isValid && <span className="error-message">{`* ${error[id]}`}</span>}
         </div>

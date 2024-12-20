@@ -92,6 +92,13 @@ const JoinProfile = () => {
     //     console.log("Updated profileData:", profileData);  // 상태 업데이트 후 로그
     // }
 
+    // 엔터키 활성화
+    const activeEnter = (e) => {
+        if (e.key === "Enter") {
+            handleSubmit(e);
+        }
+    }
+
     // 회원가입 최종 제출
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -190,6 +197,7 @@ const JoinProfile = () => {
                             type:'id',
                             placeholder: '아이디를 입력해 주세요. (2~16자)',
                             autoComplete: 'off',
+                            onKeyDown: (e) => activeEnter(e),
                         }}
                     />
 
@@ -205,6 +213,7 @@ const JoinProfile = () => {
                             type: 'nickname',
                             placeholder: '닉네임을 입력해 주세요. (2~16자)',
                             autoComplete: 'off',
+                            onKeyDown: (e) => activeEnter(e),
                         }}
                     />
 

@@ -31,8 +31,25 @@ const Login = ({ setIsAuthenticated, setUserInfo }) => {
         }
     };
 
+    // 엔터키 활성화
+    const activeEnter = (e) => {
+        if (e.key === "Enter") {
+            handleLogin();
+        }
+    }
+
     // 로그인 시도
     const handleLogin = async () => {
+        if (formData.id === '' || formData.id === null) {
+            alert("아이디를 입력해 주세요.");
+            return;
+        }
+
+        if (formData.password === '' || formData.password === null) {
+            alert("비밀번호를 입력해 주세요.")
+            return;
+        }
+
         const loginData = {id: formData.id, password: formData.password};
         console.log("front단 loginData:", loginData);
 
@@ -49,11 +66,21 @@ const Login = ({ setIsAuthenticated, setUserInfo }) => {
             navigate('/');
         } catch (error) {
             console.error('로그인 실패:', error);
-            setError((prevError) => ({
-                ...prevError,
-                id: '아이디가 올바르지 않습니다.',
-                password: '비밀번호가 올바르지 않습니다.'
-            }));
+
+            if (error.response && error.response.data && error.response.data.errors) {
+                const { id, password } = error.response.data.errors;
+                setError((prevError) => ({
+                    ...prevError,
+                    id: id || '',
+                    password: password || '',
+                }))
+            } else {
+                setError((prevError) => ({
+                    ...prevError,
+                    id: '로그인에 실패했습니다.',
+                    password: '로그인에 실패했습니다.'
+                }));
+            }
         }
     };
 
@@ -68,7 +95,7 @@ const Login = ({ setIsAuthenticated, setUserInfo }) => {
                 <title>로그인</title>
             </Helmet>
             <div className="layout-wrapper">
-                <form className="form">
+                <form className="form" onSubmit={(e) => e.preventDefault()}>
                     <h1 className="title">Welcome!</h1>
                     <InputValid
                         id='id'
@@ -81,6 +108,7 @@ const Login = ({ setIsAuthenticated, setUserInfo }) => {
                             type: 'text',
                             placeholder: '아이디를 입력하세요',
                             autoComplete: 'off',
+                            onKeyDown: (e) => activeEnter(e),
                         }}
                     />
                     <InputValid
@@ -94,6 +122,7 @@ const Login = ({ setIsAuthenticated, setUserInfo }) => {
                             type: 'password',
                             placeholder: '비밀번호를 입력하세요',
                             autoComplete: 'off',
+                            onKeyDown: (e) => activeEnter(e),
                         }}
                     />
                     <div className="div-save-id">
