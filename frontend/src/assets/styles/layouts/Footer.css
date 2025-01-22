@@ -1,0 +1,13 @@
+/* 푸터 */
+.footer-container {
+    background: #fce9efc2;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    margin-top: auto; /* 푸터를 아래로 밀어냄 */
+}
+
+.footer-message {
+    font-style: italic;
+    margin-top: 0.5rem;
+}

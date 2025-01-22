@@ -1,0 +1,109 @@
+/* 프로필 사진 컨테이너, 미리보기 */
+.profile-picture-container {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    position: relative;
+}
+
+/* 사진이 업로드 되었을 때 */
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 비율 맞추기 */
+}
+
+/* 사진이 없을 경우 텍스트 */
+.profile-picture-placeholder {
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* 취소 버튼 디자인 */
+/*.reset-btn {*/
+/*    position: absolute;*/
+/*    background: rgba(0, 0, 0, 0.5); !* 반투명 배경 *!*/
+/*    color: white;*/
+/*    border: none;*/
+/*    border-radius: 50%;*/
+/*    width: 10px;*/
+/*    height: 10px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    cursor: pointer;*/
+/*    top: -5px; !* 이미지 위로 이동 *!*/
+/*    right: -5px; !* 이미지 오른쪽 외부로 이동 *!*/
+/*    transition: background-color 0.2s ease;*/
+/*}*/
+
+/*.reset-btn:hover {*/
+/*    background: rgba(0, 0, 0, 0.8); !* 마우스 오버 시 더 진해지는 색 *!*/
+/*}*/
+
+/* 일반 input 스타일 */
+.style-input {
+    padding: 0.8rem;
+    margin-top: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+/* 활성화 다음 버튼 */
+.next-btn.default {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box; /* padding과 border 포함하여 크기 계산 */
+    min-height: 50px; /* 최소 높이 보장 */
+    width: 100%; /* 부모 크기에 맞게 버튼 너비 확장 */
+}
+
+/* 비활성화 다음 버튼 */
+.next-btn.default:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+/* 드래그 앤 드롭 영역 */
+.file-input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 450px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.file-input-wrapper.drag-active {
+    background-color: #f0f8ff;
+    border-color: #007bff;
+}
+
+/* 드래그 앤 드롭 또는 파일 선택 텍스트 */
+.file-placeholder {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.file-select-label {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+}

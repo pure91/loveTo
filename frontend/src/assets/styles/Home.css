@@ -1,0 +1,105 @@
+/* 사진 컨테이너 스타일 */
+.photo-container {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+/* 사진 아이템 스타일 */
+.photo-item {
+    display: flex;
+    gap: 1rem;
+    place-content: center;
+}
+
+.photo-item img {
+    width: 45%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* 홈 컨테이너 */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 홈 배너 스타일 */
+.home-banner h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.home-banner p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    background-color: cornflowerblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+/* 서비스박스 섹션 */
+.home-services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Link to 컴포넌트 밑줄 제거 */
+.home-services a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.service-box {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1rem;
+}
+
+.service-box:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.service-box img {
+    max-width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* 반응형 설정 */
+@media (max-width: 768px) {
+    .home-banner h1 {
+        font-size: 2rem;
+    }
+
+    .cta-button {
+        font-size: 0.9rem;
+    }
+}

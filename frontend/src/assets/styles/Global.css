@@ -1,0 +1,9 @@
+/* 레이아웃 */
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 화면 전체 높이 설정 */
+    font-family: 'Poppins', sans-serif;
+    background: #f9f9f9;
+    color: #333;
+}

@@ -1,0 +1,147 @@
+/* 전체 컨테이너 스타일 */
+.photo-album-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* 제목 스타일 */
+.photo-album-container h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* 게시물 그리드 */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 한 줄에 4개 사진씩 배치 */
+    gap: 30px; /* 사진 간 간격 */
+    justify-content: center; /* 그리드 항목을 가운데 정렬 */
+    margin-top: 3rem;
+    width: 100%; /* 전체 그리드 너비 */
+}
+
+/* 게시물 아이템 */
+.post-item {
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 auto; /* 사진을 가운데 정렬 */
+}
+
+.post-item.empty {
+    background-color: #f0f0f0; /* 빈 공간 스타일 */
+}
+
+/* 게시물 이미지 스타일 */
+.post-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 게시물 hover 효과 */
+.post-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* 게시물 캡션 */
+.post-item p {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* 게시물 액션 버튼 */
+.post-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.post-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.post-actions button:hover {
+    color: cornflowerblue;
+}
+
+/* 모달 오버레이 */
+.photo-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 모달 콘텐츠 */
+.photo-modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+}
+
+.photo-modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-modal-content input,
+.photo-modal-content textarea {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.photo-modal-content button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: cornflowerblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.photo-modal-content button:hover {
+    background-color: #0056b3;
+}

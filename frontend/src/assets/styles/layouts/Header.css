@@ -1,0 +1,111 @@
+/* 헤더 */
+.header-container {
+    color: #333;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 1.3rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-link {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #A1C6FF;
+}
+
+/* 로그인 시 Header 프로필 */
+.header-container nav .user-profile {
+    display: flex;
+    align-items: center;
+    position: relative; /* 프로필을 기준으로 모달 위치 설정 */
+}
+
+.user-profile img.profile-picture {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.logout-button {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+/* 프로필 모달 */
+.modal-content {
+    position: absolute;
+    top: 100px;  /* 프로필 사진 바로 아래에 위치하도록 조정 */
+    right: 10px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 250px;
+    width: 100%;
+    max-height: 250px;
+    height: 100vh;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.modal-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-profile-picture {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin : 10px 0 10px 0;
+}
+
+.modal-user-info h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.modal-user-info p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.close-modal-button {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.logout-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
